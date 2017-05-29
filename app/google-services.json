@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "123172567703",
+    "firebase_url": "https://beaapp-e5458.firebaseio.com",
+    "project_id": "beaapp-e5458",
+    "storage_bucket": "beaapp-e5458.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123172567703:android:254287e772bdb790",
+        "android_client_info": {
+          "package_name": "com.radek.beaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123172567703-o20718u1fea0096998f7n9sh7ksqatli.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArHcTSIfhGxfYIXJclR_U3eP7b9e3UaPY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
