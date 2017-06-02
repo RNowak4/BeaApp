@@ -81,11 +81,34 @@ public class ManageBeaconsActivity extends AppCompatActivity implements BeaconCo
         final Button sendBeaconButton = (Button) findViewById(R.id.sendBeacon);
         final RequestParams surveyParams = new RequestParams();
         final String beaconName = ((TextView) findViewById(R.id.beaconId)).getText().toString();
+        final ProgressDialog dialog = ProgressDialog.show(this, "", "Usuwanie beacona...", true);
         surveyParams.put("beaconName", beaconName);
 
         sendBeaconButton.setEnabled(false);
+        dialog.show();
 
-        // TODO usuwanie beacona
+        BackendClient.delete("/beacon", surveyParams, new TextHttpResponseHandler() {
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                final Context context = ManageBeaconsActivity.this.getApplicationContext();
+                Toast.makeText(context, "Bład podczas usuwania beacona. Sproboj ponownie.", Toast.LENGTH_LONG).show();
+                throwable.printStackTrace();
+                sendBeaconButton.setEnabled(true);
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                final Context context = ManageBeaconsActivity.this.getApplicationContext();
+                final Intent intent = new Intent(context, MainMenuActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Toast.makeText(context, "Poprawnie dodano beacon", Toast.LENGTH_LONG).show();
+                sendBeaconButton.setEnabled(true);
+                context.startActivity(intent);
+                dialog.dismiss();
+            }
+        });
     }
 
     public void getBack(View view) {

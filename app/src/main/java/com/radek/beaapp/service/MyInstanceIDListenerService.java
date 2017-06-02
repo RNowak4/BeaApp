@@ -11,7 +11,6 @@ public class MyInstanceIDListenerService extends InstanceIDListenerService {
 
     @Override
     public void onTokenRefresh() {
-        Log.d(TAG, "AAAAAAAAAAAAAAAAAAAAAAA");
         Intent intent = new Intent(this, RegistrationIntentService.class);
         startService(intent);
     }
